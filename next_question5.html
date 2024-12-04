@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>유형 테스트 - Q5</title>
+  <style>
+    /* 전체 페이지 중앙 정렬 */
+    body {
+        background-color: #f0e9e9;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 90%;
+        max-width: 600px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .site-title {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .question-image {
+        max-width: 90%; /* 이미지를 화면 크기에 맞게 조정 */
+        height: auto; /* 비율 유지 */
+        margin-bottom: 20px; /* 질문과 버튼 사이 간격 */
+    }
+
+    .answer-button {
+        padding: 20px 40px;
+        font-size: 1.2rem;
+        color: white;
+        background-color: #ff69b4;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.3s ease;
+        box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
+        margin: 10px 0;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .answer-button:hover {
+        background-color: #ff85c0;
+        transform: scale(1.05);
+    }
+
+    .answer-button:focus {
+        outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="site-title">나의 새내기 유형은?</h1>
+    <img src="images/Q5.jpg" alt="Q5 이미지" class="question-image">
+    
+    <!-- 답변 버튼들 -->
+    <button class="answer-button" onclick="selectAnswer('Q1')">지식 퀴즈</button>
+    <button class="answer-button" onclick="selectAnswer('Q2')">팀워크 게임</button>
+    <button class="answer-button" onclick="selectAnswer('Q3')">없음</button>
+    <button class="answer-button" onclick="selectAnswer('Q4')">술게임</button>
+  </div>
+
+  <script>
+    function selectAnswer(answer) {
+  // 기존 값 가져오기 또는 초기값 설정
+  let count = localStorage.getItem(answer) ? parseInt(localStorage.getItem(answer)) : 0;
+
+  // 값 증가 후 다시 저장
+  localStorage.setItem(answer, count + 1);
+
+  console.log(`Answer ${answer}: ${count + 1}`); // 디버그용 콘솔 출력
+
+  // 다음 질문으로 이동 (Q2.html 등)
+  window.location.href = 'next_question6.html';
+}
+  </script>
+</body>
+</html>

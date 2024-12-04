@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>디콘 유형테스트</title>
+  
+  <style>
+    body {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0e9e9;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .site-title {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    /* 이미지 크기 조정 */
+    .main-image {
+        width: 80%;  /* 창 크기에 맞춰 90%로 이미지 크기 설정 */
+        height: auto;   /* 비율을 유지하면서 높이 자동 설정 */
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .start-button {
+        padding: 20px 40px;
+        font-size: 1.5rem;
+        color: white;
+        background-color: #ff69b4;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.3s ease;
+        box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
+    }
+
+    .start-button:hover {
+        background-color: #ff85c0;
+        transform: scale(1.1);
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="container">
+    <h1 class="site-title">나의 새내기 유형은?</h1>
+    <img src="images/newbie_type.jpg" alt="Newbie Type Image" class="main-image">
+    <button class="start-button" onclick="goToNextPage()">시작하기</button>
+  </div>
+
+  <script>
+    // 페이지를 이동하는 함수
+    function goToNextPage() {
+      // 다음 페이지로 이동 (다음 페이지의 파일명을 작성)
+      window.location.href = "next_question1.html"; // "next_page.html"을 원하는 URL로 변경하세요.
+    }
+  </script>
+
+</body>
+</html>
