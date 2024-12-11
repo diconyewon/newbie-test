@@ -6,34 +6,46 @@
   <title>결과 페이지</title>
   <style>
     body {
-      background-color: #f0e9e9;
-      text-align: center;
-      font-family: Arial, sans-serif;
+        background-color: #f0e9e9; /* 배경 색상 */
+        background-image: url('/newbie-test/images/newbie.jpg'); /* 이미지 경로 설정 */
+        background-size: 100%; /* 배경 이미지를 화면의 50% 크기로 설정 */
+        background-position: center; /* 이미지를 중앙 정렬 */
+        background-repeat: no-repeat; /* 이미지 반복 방지 */
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
     }
 
-    .result-image {
-      max-width: 40%;
-      height: auto;
-      margin-bottom: 20px;
-    }
-
-    /* result-container에 flexbox 사용하여 버튼 정렬 */
     #result-container {
       display: flex;
       flex-direction: column;
-      align-items: center; /* 수직으로 정렬 */
-      justify-content: center; /* 가로로 가운데 정렬 */
-      height: 100vh; /* 화면 전체를 차지하게 함 */
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* 화면 전체 높이를 사용 */
     }
 
     h1 {
-      margin-bottom: -30px; /* 제목과 이미지 사이에 간격 추가 */
+      margin-bottom: 30px; /* 제목과 이미지 사이의 간격 */
+      font-size: 2.5rem;
+      color: #333;
     }
 
+    .result-image {
+      max-width: 35%; /* 이미지 크기를 화면에 맞게 제한 */
+      height: auto;   /* 비율 유지 */
+      margin-bottom: 50px; /* 이미지와 버튼 사이 간격 */
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
     .start-button {
-      padding: 20px 40px;
-      font-size: 1.5rem;
+      padding: 25px 90px;
+      font-size: 1.7rem;
       color: white;
       background-color: #ff69b4;
       border: none;
@@ -55,10 +67,9 @@
 </head>
 <body>
 
-  <h1>디콘 유형 테스트 결과</h1>
-
   <div id="result-container">
-    <img id="result-image" class="result-image" src="" alt="결과 이미지">
+    <h1>디콘 유형 테스트 결과</h1>
+    <img id="/newbie-test/result-image" class="result-image" src="" alt="결과 이미지">
     <button class="start-button" onclick="resetTest()">다시하기</button>
   </div>
 
@@ -81,20 +92,20 @@
     let resultImage = "";
 
     if (resultType === "Q1") {
-      resultImage = "images/result1.jpg";
+      resultImage = "/newbie-test/images/result1.jpg";
     } else if (resultType === "Q2") {
-      resultImage = "images/result2.jpg";
+      resultImage = "/newbie-test/images/result2.jpg";
     } else if (resultType === "Q3") {
-      resultImage = "images/result4.jpg";
+      resultImage = "/newbie-test/images/result4.jpg";
     } else if (resultType === "Q4") {
-      resultImage = "images/result3.jpg";
+      resultImage = "/newbie-test/images/result3.jpg";
     }
 
     document.getElementById("result-image").src = resultImage;
 
     function resetTest() {
-      localStorage.clear(); // 모든 저장된 데이터 초기화
-      window.location.href = "index.html"; // 첫 페이지로 이동
+      localStorage.clear();
+      window.location.href = "/newbie-test/index.html";
     }
   </script>
 </body>
