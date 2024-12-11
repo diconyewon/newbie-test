@@ -30,21 +30,38 @@
         box-sizing: border-box;
     }
 
-    .site-title {
-        font-size: 2.5rem;
+    .progress-container {
+        width: 100%;
         margin-bottom: 20px;
-        color: #333;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 20px;
+        background-color: #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        width: 0%; /* 초기 값 */
+        background-color: #ff69b4;
+        border-radius: 10px;
+        transition: width 0.3s ease; /* 부드러운 애니메이션 */
     }
 
     .question-image {
-        max-width: 90%; /* 이미지를 화면 크기에 맞게 조정 */
+        max-width: 150%; /* 이미지를 화면 크기에 맞게 조정 */
         height: auto; /* 비율 유지 */
-        margin-bottom: 20px; /* 질문과 버튼 사이 간격 */
+        margin-top: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 70px; /* 질문과 버튼 사이 간격 */
     }
 
     .answer-button {
-        padding: 20px 40px;
-        font-size: 1.2rem;
+        padding: 25px 80px;
+        font-size: 1.7rem;
         color: white;
         background-color: #ff69b4;
         border: none;
@@ -52,9 +69,9 @@
         cursor: pointer;
         transition: transform 0.2s ease, background-color 0.3s ease;
         box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
-        margin: 10px 0;
-        width: 100%;
-        max-width: 400px;
+        margin: 15px 0;
+        width: 120%;
+        max-width: 1000px;
     }
 
     .answer-button:hover {
@@ -69,7 +86,11 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="site-title">나의 새내기 유형은?</h1>
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
     <img src="/newbie-test/images/Q9.jpg" alt="Q9 이미지" class="question-image">
     
     <!-- 답변 버튼들 -->
@@ -80,6 +101,12 @@
   </div>
 
   <script>
+    function updateProgress(current, total) {
+      const progressFill = document.getElementById('progressFill');
+      const percentage = (current / total) * 100;
+      progressFill.style.width = percentage + '%';
+    }
+
     function selectAnswer(answer) {
   // 기존 값 가져오기 또는 초기값 설정
   let count = localStorage.getItem(answer) ? parseInt(localStorage.getItem(answer)) : 0;
@@ -92,6 +119,8 @@
   // 다음 질문으로 이동 (Q2.html 등)
   window.location.href = '/newbie-test/next_question10.html';
 }
+
+updateProgress(9, 12); 
   </script>
 </body>
 </html>
