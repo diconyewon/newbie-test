@@ -7,6 +7,7 @@
   <style>
     /* 전체 페이지 중앙 정렬 */
     body { 
+        background-color: #f0e9e9;
         text-align: center;
         margin: 0;
         padding: 0;
@@ -14,7 +15,6 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-color: #f0e9e9;
         font-family: Arial, sans-serif;
     }
 
@@ -30,21 +30,40 @@
         box-sizing: border-box;
     }
 
-    .site-title {
-        font-size: 2.5rem;
+    .progress-container {
+        width: 100%;
         margin-bottom: 20px;
-        color: #333;
     }
 
+    .progress-bar {
+        width: 100%;
+        height: 20px;
+        background-color: #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        width: 0%; /* 초기 값 */
+        background-color: #ff69b4;
+        border-radius: 10px;
+        transition: width 0.3s ease; /* 부드러운 애니메이션 */
+    }
+
+    
+
     .question-image {
-        max-width: 90%; /* 이미지를 화면 크기에 맞게 조정 */
+        max-width: 150%; /* 이미지를 화면 크기에 맞게 조정 */
         height: auto; /* 비율 유지 */
-        margin-bottom: 20px; /* 질문과 버튼 사이 간격 */
+        margin-top: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 70px; /* 질문과 버튼 사이 간격 */
     }
 
     .answer-button {
-        padding: 20px 40px;
-        font-size: 1.2rem;
+        padding: 25px 80px;
+        font-size: 1.7rem;
         color: white;
         background-color: #ff69b4;
         border: none;
@@ -52,9 +71,9 @@
         cursor: pointer;
         transition: transform 0.2s ease, background-color 0.3s ease;
         box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
-        margin: 10px 0;
-        width: 100%;
-        max-width: 400px;
+        margin: 15px 0;
+        width: 120%;
+        max-width: 1000px;
     }
 
     .answer-button:hover {
@@ -69,7 +88,12 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="site-title">나의 새내기 유형은?</h1>
+    <!-- 진행률 표시 -->
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
     <img src="/newbie-test/images/Q2.jpg" alt="Q2 이미지" class="question-image">
     
     <!-- 답변 버튼들 -->
@@ -80,18 +104,29 @@
   </div>
 
   <script>
+    // 진행률 업데이트
+    function updateProgress(current, total) {
+      const progressFill = document.getElementById('progressFill');
+      const percentage = (current / total) * 100;
+      progressFill.style.width = percentage + '%';
+    }
+
+    // 답변 선택 처리
     function selectAnswer(answer) {
-  // 기존 값 가져오기 또는 초기값 설정
-  let count =  localStorage.getItem(answer) ? parseInt(localStorage.getItem(answer)) : 0;
+      // 기존 값 가져오기 또는 초기값 설정
+      let count = localStorage.getItem(answer) ? parseInt(localStorage.getItem(answer)) : 0;
 
-  // 값 증가 후 다시 저장
-  localStorage.setItem(answer, count + 1);
+      // 값 증가 후 다시 저장
+      localStorage.setItem(answer, count + 1);
 
-  console.log(`Answer ${answer}: ${count + 1}`); // 디버그용 콘솔 출력
+      console.log(`Answer ${answer}: ${count + 1}`); // 디버그용 콘솔 출력
 
-  // 다음 질문으로 이동 (Q2.html 등)
-  window.location.href = '/newbie-test/next_question3.html';
-}
+      // 다음 질문으로 이동
+      window.location.href = '/newbie-test/next_question3.html';
+    }
+
+    // 현재 질문의 진행률 설정 (예: 2번 질문)
+    updateProgress(2, 12); // 현재 질문 번호와 총 질문 개수
   </script>
 </body>
 </html>
